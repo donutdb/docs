@@ -1,0 +1,58 @@
+DonutDB takes the security of their services seriously. If you believe you have found a security vulnerability on our website, **do not** create a public issue. Instead, please report it privately.
+
+{{Alert info|title=Warning!|text=Do not create a public issue report or share the vulnerability with any other party.}}
+
+If you discover a security vulnerability on DonutDB, please report it through one of these channels:
+
+{{Table
+| 1/1=Email
+| "1/2=business.nmc [at] outlook [dot] com"
+
+| 2/1=Discord (DM)
+| "2/2=@numenmc"
+
+| 3/1=Discord (Guild) (Preferred)
+| 3/2=Please join our [[https://discord.donutdb.net|Discord]] and create a ticket
+}}
+
+Please leave as much detail as possible to help us reproduce and investigate the issue. We aim to respond within 48 hours of reporting.
+
+== Information to include ==
+Please include this information with your security advisory:
+{{List unordered
+| 0=Description of the issue
+| 1=Steps to reproduce
+| 2=Affected endpoints, pages, or features
+| 3=Relevant screenshots, logs, outputs, or payloads
+| 4=Your contact information, preferably for Discord
+}}
+
+== Scope ==
+The following is **out of scope** for reporting:
+{{List unordered
+| 0=Third-party services out of our control
+| 1=Social engineering attacks
+| 2=Physical security
+| 3=Denial-of-service (DoS/DDoS) attacks
+}}
+
+== Responsible disclosure expectations ==
+We request that you:
+{{List unordered
+| 0=Do not publicly disclose the vulnerability until it has been addressed
+| 1=Avoid accessing, modifying, or deleting user data beyond what is necessary to demonstrate the vulnerability
+| 2=Do not perform actions that could degrade service availability or user experience
+}}
+
+We will not pursue legal action against individuals who report vulnerabilities in good faith, follow the disclosure policy, and who avoid privacy violations, data destruction, or service disruption.
+
+== Response process ==
+Upon receiving a report, we will:
+{{List unordered
+| 0=Acknowledge the report within 48 hours
+| 1=Investigate and validate the issue
+| 2=Patch the vulnerability if confirmed
+| 3=Provide the reporter with updates
+| 4=Notify the reporter when the issue is resolved
+| 5=Publish a public notice regarding the patched vulnerability
+}}

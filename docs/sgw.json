@@ -1,0 +1,11 @@
+{
+    "meta": {
+        "name": "DonutDB Docs",
+        "byline": "from the DonutDB Docs"
+    },
+    "build": {
+        "index": "Main Page",
+        "theme": "./donutwater",
+        "staticFiles": "./static"
+    }
+}

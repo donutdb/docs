@@ -1,0 +1,21 @@
+The [[Template:Alert info|Alert info]] template renders an information box.
+
+{{Alert info|title=Example|text=This is text rendered within an Alert info box}}
+{{Alert info|text=This is an alert without a title}}
+
+== Arguments ==
+The Alert info template can be constructed with the following arguments:
+
+{{Table
+| h/1=Argument
+| h/2=Description
+
+| "1/1=text="
+| 1/2=The text to render inside of the alert.
+
+| "2/1=title="
+| 2/2=The title to render. If this argument is omitted a title will not render.
+}}
+
+== Source ==
+This template's JavaScript source code is in [[Template:Alert info/Code]].

@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "sgw dev -i ./docs",
+    "build": "sgw build -i ./docs -g . -o ./dist"
+  },
+  "type": "module",
+  "dependencies": {
+    "@numenmc/sgw": "^1.0.0"
+  }
+}
