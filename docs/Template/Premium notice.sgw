@@ -1,0 +1,6 @@
+The [[Template:Premium notice|Premium notice]] template renders an asterisk to note something as premium-only (DonutDB users only).
+
+This is text{{Premium notice|}}
+
+== Source ==
+This template's JavaScript source code is in [[Template:Premium notice/Code]].

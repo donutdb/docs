@@ -1,3 +1,28 @@
 DonutDB.net is a DonutSMP auction house, player stats, leaderboards, and general information aggregator. This site provides documentation regarding the many features of DonutDB.
 
-{{Alert info|"text=Are you trying to use DonutDB? If so, head to the [[https://donutdb.net|main website]]. This is the documentation."}}
+Anyone can use DonutDB to find information swiftly, or to analyse markets and make predictions.
+
+{{Alert info|"text=Try DonutDB now by heading over to the [[https://donutdb.net|main website]]. You are on the documentation."}}
+
+DonutDB's suite of features includes:
+{{List unordered
+| 0=Auction price tracking with 90 days historical data
+| 1=Financial graphs (Line & Candlestick)
+| "2=Raw data downloads{{Premium notice|}}"
+| 3=Run data through functions (SMA, EMA, etc.)
+| 4=Leaderboard data up to 6600th place and 3 weeks of historical leaderboard data
+| 5=Per-player playtime tracking
+| 6=Per-player stats history with 90 days historical data
+| 7=XGBoost market forecasting with 0% accuracy (WIP)
+}}
+
+== Getting Started ==
+To start using DonutDB, head to [[https://donutdb.net|donutdb.net]]. You can press {{Kbd|key=Ctrl}} + {{Kbd|key=K}} or use the search bar in the navigation to look for anything on DonutSMP.
+
+You can log in with Discord to access more features such as account linking and vouches. Logging in is optional and is not required for the website to function.
+
+== Is DonutDB Down? ==
+{{Alert info|"text=Status information is published to the [[https://status.donutdb.net|status page]] and our [[https://discord.donutdb.net|Discord server]]."}}
+
+== Need Support? ==
+If you need any help using DonutDB, please ask one of us on our [[https://discord.donutdb.net|Discord server]].

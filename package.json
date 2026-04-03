@@ -5,6 +5,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@numenmc/sgw": "^1.0.0"
+    "@numenmc/sgw": "^1.0.1"
   }
 }
