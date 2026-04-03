@@ -13,27 +13,161 @@
         .sgw-unknown-template {
             color: rgb(243, 122, 122);
         }
+
+        .top-nav {
+            background: var(--background);
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5em;
+            gap: 1em;
+            border-radius: 0.5em;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .search-results {
+            display: flex;
+            flex-direction: column;
+
+            position: absolute;
+            top: 52px;
+
+            background: var(--background);
+            z-index: 10;
+
+            width: 100%;
+
+            border-radius: 0.4em;
+
+            pointer-events: auto;
+            opacity: 1;
+            transform: translateY(0);
+
+            transition: opacity 200ms ease-in-out,
+                        transform 200ms ease-in-out;
+        }
+
+        .search-results.hidden {
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+
+        .search-results .result {
+            display: block;
+            color: var(--text-main);
+
+            padding: 0.5em 1em;
+            text-decoration: none;
+        }
+
+        .search-results .result:first-child {
+            border-top-left-radius: 0.4em;
+            border-top-right-radius: 0.4em;
+        }
+
+        .search-results .result:last-child {
+            border-bottom-left-radius: 0.4em;
+            border-bottom-right-radius: 0.4em;
+        }
+
+        .search-results .result:hover {
+            background: color-mix(in srgb, var(--background) 97%, white);
+            color: var(--links);
+        }
+
+        .search-input {
+            display: block;
+            margin: 0;
+            background-color: var(--background-body);
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <nav style="background: var(--background); display: flex; padding: 0.5em; gap: 1em; border-radius: 0.5em; align-items: center; gap: 0.5em; padding-right: 1em;">
-        <a href="/"><img src="/static/site-logo.webp" alt="Site Logo" width="32" height="32" style="display: block;"></a>
+    <nav class="top-nav">
+        <a href="/">
+            <img src="/static/site-logo.webp" alt="Site Logo"
+                style="display: block; width: calc(57px - 1em); height: auto;">
+        </a>
+
+        <div style="min-width: 40%; position: relative;">
+            <input type="text" placeholder="Search..." class="search-input" id="search-input">
+            <div class="search-results hidden">
+                <a class="result" href="/">Welcome to DonutDB Docs</a>
+                <a class="result" href="/">Security</a>
+            </div>
+
+            <script>
+                (async () => {
+                    const searchIndex = await (await fetch("/search.sgw.json")).json();
+
+                    const searchInput = document.querySelector("#search-input");
+                    const searchResults = document.querySelector(".search-results");
+
+                    const setSearchResultsVisibility = (shown) =>
+                        shown ? searchResults.classList.remove("hidden") : searchResults.classList.add("hidden");
+
+                    const generateSearchResultObject = (name, href) =>
+                        `<a class="result" href="${href}">${name}</a>`;
+
+                    const renderResults = (results) => {
+                        searchResults.innerHTML = results
+                            .map(r => generateSearchResultObject(r.title, r.path))
+                            .join("");
+                    };
+
+                    const performSearch = (query) => {
+                        if (!query) return [];
+
+                        const q = query.toLowerCase();
+
+                        return searchIndex.filter(item =>
+                            item.title.toLowerCase().includes(q) ||
+                            item.content.toLowerCase().includes(q)
+                        );
+                    };
+
+                    searchInput.addEventListener("input", (e) => {
+                        const query = e.target.value.trim();
+
+                        if (!query) {
+                            setSearchResultsVisibility(false);
+                            searchResults.innerHTML = "";
+                            return;
+                        }
+
+                        const results = performSearch(query);
+
+                        renderResults(results);
+                        setSearchResultsVisibility(results.length > 0);
+                    });
+                })();
+            </script>
+        </div>
     </nav>
     <div>
         <h1 style="margin-bottom: 0;">{{ article.title }}</h1>
-        <div>[ <a href="/">Source</a> ] [ <a href="/">View History</a> ]</div>
+        <div>
+            [ <a href="https://github.com/donutdb/docs/blob/main/{{ meta.filePath }}">Source</a> ]
+            [ <a href="https://github.com/donutdb/docs/commits/main/{{ meta.filePath }}">View History</a> ]
+        </div>
         <hr>
         {{ article.html | safe }}
     </div>
 
-    <footer>
+    <footer style="margin-top: 0; padding-top: 0;">
         <p>
-            This page was last modified <span data-date="{{ meta.lastModified }}">{{ meta.lastModified }}</span>. This is commit {{ meta.gitCommit }} built at <span data-date="{{ meta.buildTime }}">{{ meta.buildTime }}</span>.
+            This page was last modified <span data-date="{{ meta.lastModified }}">{{ meta.lastModified }}</span>. This
+            is commit {{ meta.gitCommit }} built at <span data-date="{{ meta.buildTime }}">{{ meta.buildTime }}</span>.
         </p>
 
         <div style="text-align: center;">
-            <!-- Consider not removing this -->
             <img src="/attrib.svg">
         </div>
     </footer>

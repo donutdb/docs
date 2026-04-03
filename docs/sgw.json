@@ -4,7 +4,7 @@
         "byline": "from the DonutDB Docs"
     },
     "build": {
-        "index": "Main Page",
+        "index": "Welcome to DonutDB Docs",
         "theme": "./donutwater",
         "staticFiles": "./static"
     }
