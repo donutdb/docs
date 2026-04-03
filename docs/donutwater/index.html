@@ -98,10 +98,7 @@
 
         <div style="min-width: 40%; position: relative;">
             <input type="text" placeholder="Search..." class="search-input" id="search-input">
-            <div class="search-results hidden">
-                <a class="result" href="/">Welcome to DonutDB Docs</a>
-                <a class="result" href="/">Security</a>
-            </div>
+            <div class="search-results hidden"></div>
 
             <script>
                 (async () => {
@@ -154,8 +151,8 @@
     <div>
         <h1 style="margin-bottom: 0;">{{ article.title }}</h1>
         <div>
-            [ <a href="https://github.com/donutdb/docs/blob/main/{{ meta.filePath }}">Source</a> ]
-            [ <a href="https://github.com/donutdb/docs/commits/main/{{ meta.filePath }}">View History</a> ]
+            [ <a href="https://github.com/donutdb/docs/blob/main/docs/{{ meta.filePath }}">Source</a> ]
+            [ <a href="https://github.com/donutdb/docs/commits/main/docs/{{ meta.filePath }}">View History</a> ]
         </div>
         <hr>
         {{ article.html | safe }}
