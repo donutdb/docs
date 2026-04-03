@@ -1,4 +1,4 @@
-export default function Table(params, { safe }) {
+export default async function Table(params, { safe, render }) {
     let maxRow = 0;
     let maxCol = 0;
 
@@ -35,7 +35,7 @@ export default function Table(params, { safe }) {
         html += `<thead>\n<tr>\n`;
         for (let c = 1; c <= maxCol; c++) {
             const cellValue = headers[c] ?? "";
-            html += `<th>${safe(cellValue)}</th>\n`;
+            html += `<th>${await render(cellValue)}</th>\n`;
         }
         html += `</tr>\n</thead>\n`;
     }
@@ -47,7 +47,7 @@ export default function Table(params, { safe }) {
 
         for (let c = 1; c <= maxCol; c++) {
             const cellValue = parsed[r]?.[c] ?? "";
-            html += `<td>${safe(cellValue)}</td>\n`;
+            html += `<td>${await render(cellValue)}</td>\n`;
         }
 
         html += `</tr>\n`;

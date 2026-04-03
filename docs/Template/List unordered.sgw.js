@@ -1,4 +1,4 @@
-export default function Code(params, { safe }) {
+export default async function ListUnordered(params, { safe, render }) {
     const keys = Object.keys(params).sort((a, b) => {
         const na = Number(a);
         const nb = Number(b);
@@ -16,7 +16,9 @@ export default function Code(params, { safe }) {
         return a.localeCompare(b);
     });
 
-    const items = keys.map(k => `<li>${safe(params[k])}</li>`);
+    const items = await Promise.all(
+        keys.map(async (k) => `<li>${await render(params[k])}</li>`)
+    );
 
     return `<ul>${items.join("")}</ul>`;
 }
